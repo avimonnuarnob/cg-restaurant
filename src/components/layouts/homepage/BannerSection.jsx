@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Slider from 'react-slick';
 import Slide1Image from '../../../assets/images/slide1image.jpg';
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 	slide__slogan: {
 		letterSpacing: '1.25rem !important',
 		fontSize: '6.875rem !important',
+		fontFamily: 'open_sanscondensed !important',
 	},
 	'slide__slogan--logo': {
 		display: 'inline !important',
@@ -74,7 +75,10 @@ const SamplePrevArrow = (props) => {
 const settings = {
 	dots: true,
 	infinite: true,
-	speed: 500,
+	autoplay: true,
+	speed: 2000,
+	autoplaySpeed: 2000,
+	cssEase: 'cubic-bezier(0.165, 0.840, 0.440, 1.000)',
 	slidesToShow: 1,
 	slidesToScroll: 1,
 	nextArrow: <SampleNextArrow />,
@@ -82,15 +86,22 @@ const settings = {
 	dotsClass: 'slick-dots slick-thumb',
 	appendDots: (dots) => <ul>{dots}</ul>,
 	customPaging: (i) => <a>{i + 1}</a>,
+	adaptiveHeight: true,
 };
 
 const BannerSection = () => {
 	const classes = useStyles();
+
 	return (
 		<div>
 			<Slider {...settings}>
 				<Box className={classes.slide}>
-					<Typography color="secondary.main" fontWeight="bold" variant="h5" sx={{ letterSpacing: '0.25rem' }}>
+					<Typography
+						color="secondary.main"
+						fontWeight="bold"
+						variant="h5"
+						sx={{ letterSpacing: '0.25rem', fontFamily: 'open_sanscondensed' }}
+					>
 						welcome to our delicious corner
 					</Typography>
 
@@ -111,6 +122,21 @@ const BannerSection = () => {
 						We have a proper passion for cooking. Love is the secret ingredient that makes all our meals taste better
 						and magical.
 					</Typography>
+
+					<Box sx={{ mt: 10 }}>
+						<Button
+							sx={{
+								fontFamily: 'sans-serif',
+								color: 'white',
+								px: 1,
+								py: 1,
+								border: (theme) => `1px solid ${theme.palette.secondary.main}`,
+								borderRadius: '0',
+							}}
+						>
+							<Box sx={{ backgroundColor: '#121D20', px: 2, py: 1 }}>View More</Box>
+						</Button>
+					</Box>
 				</Box>
 
 				<Box className={classes.slide}>
@@ -120,10 +146,24 @@ const BannerSection = () => {
 					<Typography fontWeight="bolder" className={[classes.slide__slogan, 'stroke-text'].join(' ')}>
 						THE BEST DISHES
 					</Typography>
-					<Typography>
+					<Typography sx={{ letterSpacing: '0.25rem', margin: 'auto' }} width="50%">
 						We have a proper passion for cooking. Love is the secret ingredient that makes all our meals taste better
 						and magical.
 					</Typography>
+					<Box sx={{ mt: 10 }}>
+						<Button
+							sx={{
+								fontFamily: 'sans-serif',
+								color: 'white',
+								px: 1,
+								py: 1,
+								border: (theme) => `1px solid ${theme.palette.secondary.main}`,
+								borderRadius: '0',
+							}}
+						>
+							<Box sx={{ backgroundColor: '#121D20', px: 2, py: 1 }}>View More</Box>
+						</Button>
+					</Box>
 				</Box>
 
 				<Box className={classes.slide}>
@@ -133,10 +173,39 @@ const BannerSection = () => {
 					<Typography fontWeight="bolder" className={[classes.slide__slogan, 'stroke-text'].join(' ')}>
 						THE BEST DISHES
 					</Typography>
-					<Typography>
+					<Typography sx={{ letterSpacing: '0.25rem', margin: 'auto' }} width="50%">
 						We have a proper passion for cooking. Love is the secret ingredient that makes all our meals taste better
-						and magical.
+						and magical. We have a proper passion for cooking. Love is the secret ingredient that makes all our meals
+						taste better and magical. We have a proper passion for cooking. Love is the secret ingredient that makes all
+						our meals taste better and magical.
 					</Typography>
+					<Box sx={{ mt: 10 }}>
+						<Button
+							sx={{
+								fontFamily: 'sans-serif',
+								color: 'white',
+								px: 1,
+								py: 1,
+								border: (theme) => `1px solid ${theme.palette.secondary.main}`,
+								borderRadius: '0',
+							}}
+						>
+							<Box
+								sx={{
+									backgroundColor: '#121D20',
+									px: 2,
+									py: 1,
+									transition: 'all 0.5s',
+									'&:hover': {
+										color: 'black',
+										bgcolor: 'white',
+									},
+								}}
+							>
+								View More
+							</Box>
+						</Button>
+					</Box>
 				</Box>
 			</Slider>
 		</div>
