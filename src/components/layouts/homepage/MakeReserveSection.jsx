@@ -1,12 +1,6 @@
-/* eslint-disable no-unused-vars */
-import {
-	Box,
-	Grid,
-	// eslint-disable-next-line prettier/prettier
-	Typography
-} from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { Form, Formik } from 'formik';
-import { useState } from 'react';
 import DateInputField from '../../molecules/DateInputField';
 import SelectInputField from '../../molecules/SelectInputField';
 import TextInputField from '../../molecules/TextInputField';
@@ -15,97 +9,53 @@ const selectItemsArray = [
 	{
 		id: '1',
 		label: '2 persons',
-		value: 2,
+		value: '2',
 	},
 	{
 		id: '2',
 		label: '4 persons',
-		value: 4,
+		value: '4',
 	},
 	{
-		id: '1',
+		id: '3',
 		label: '8 persons',
-		value: 8,
+		value: '8',
 	},
 ];
 
+const useStyles = makeStyles((theme) => ({
+	button: {
+		borderRadius: '0 !important',
+		backgroundColor: `${theme.palette.secondary.main} !important`,
+		color: 'black !important',
+
+		'&:hover': {
+			backgroundColor: 'white !important',
+		},
+	},
+}));
+
 const MakeReserveSection = () => {
-	const [date, setDate] = useState(null);
-	const [time, setTime] = useState(null);
+	const classes = useStyles();
+
+	const onSubmitHandler = (data) => {
+		console.log(data);
+	};
 
 	return (
-		<Box sx={{ bgcolor: '#0D1315', py: 20, textAlign: 'center' }}>
-			<Box sx={{ width: '80%', bgcolor: '#121D20', mx: 'auto', p: 3 }}>
-				<Typography variant="h5">Make a Reserve</Typography>
-
-				{/* <Box component="form" noValidate autoComplete="off">
-					<Grid container spacing={2}>
-						<Grid item md={6} sm={6} xs={12} sx={{ p: 4 }}>
-							<TextInputField
-								fullWidth
-								isRequired
-								label="Your Name"
-								name="email"
-								boxStyles={{ padding: '15px 0 30px 0' }}
-							/>
-						</Grid>
-
-						<Grid item md={6} sm={6} xs={12}>
-							<TextField id="phoneNo" label="Your Phone" required variant="standard" fullWidth />
-						</Grid>
-						<Grid item md={4} sm={4} xs={12}>
-							<FormControl fullWidth>
-								<InputLabel id="demo-simple-select-label" />
-
-								<NativeSelect
-									fullWidth
-									defaultValue={30}
-									inputProps={{
-										name: 'age',
-										id: 'uncontrolled-native',
-									}}
-								>
-									<option value={10}>Ten</option>
-									<option value={20}>Twenty</option>
-									<option value={30}>Thirty</option>
-								</NativeSelect>
-							</FormControl>
-						</Grid>
-						<Grid item md={4} sm={4} xs={12}>
-							<LocalizationProvider dateAdapter={AdapterDateFns}>
-								<DatePicker
-									label="Basic example"
-									value={date}
-									onChange={(newValue) => {
-										setDate(newValue);
-									}}
-									// eslint-disable-next-line react/jsx-props-no-spreading
-									renderInput={(params) => <TextField {...params} variant="standard" fullWidth />}
-								/>
-							</LocalizationProvider>
-						</Grid>
-						<Grid item md={4} sm={4} xs={12}>
-							<LocalizationProvider dateAdapter={AdapterDateFns}>
-								<TimePicker
-									label="Basic example"
-									value={time}
-									onChange={(newValue) => {
-										setTime(newValue);
-									}}
-									// eslint-disable-next-line react/jsx-props-no-spreading
-									renderInput={(params) => <TextField {...params} variant="standard" fullWidth />}
-								/>
-							</LocalizationProvider>
-						</Grid>
-					</Grid>
-				</Box> */}
+		<Box sx={{ bgcolor: '#0D1315', textAlign: 'center' }}>
+			<Box sx={{ width: '70%', bgcolor: '#121D20', mx: 'auto', p: 5 }}>
+				<Typography variant="h5" color="secondary.main" fontWeight="bold">
+					Make a Reserve
+				</Typography>
 
 				<Formik
 					initialValues={{
 						name: '',
 						phone: '',
+						persons: '',
 					}}
-					onSubmit={() => {}}
+					onSubmit={onSubmitHandler}
 					enableReinitialize
 				>
 					{() => (
@@ -150,9 +100,21 @@ const MakeReserveSection = () => {
 									</Grid>
 								</fieldset>
 							</Box>
+							<Box sx={{ my: 4 }}>
+								<Button type="submit" variant="contained" className={classes.button}>
+									Book A Table
+								</Button>
+							</Box>
 						</Form>
 					)}
 				</Formik>
+
+				<Typography>
+					<Typography variant="span" color="secondary.main">
+						Hotline Number:
+					</Typography>{' '}
+					+88013 24 24 9090
+				</Typography>
 			</Box>
 		</Box>
 	);

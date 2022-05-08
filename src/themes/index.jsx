@@ -42,7 +42,7 @@ const darkMode = {
 
 const getDesignsFromMode = (mode) => ({
 	typography: {
-		fontFamily: 'open_sanscondensed, Arial',
+		fontFamily: 'Inter, open_sanscondensed, sans-serif',
 	},
 	components: {
 		MuiCssBaseline: {

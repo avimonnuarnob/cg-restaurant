@@ -2,10 +2,17 @@
 import { Box, Button, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import DJImage from '../../../assets/images/dj.jpg';
+import Salmon from '../../../assets/images/salmon.jpg';
 import QuoteSvg from '../../../assets/svgs/quote.svg';
 
 const useStyles = makeStyles((theme) => ({
-	section: {},
+	section: {
+		backgroundImage: `radial-gradient(50% 50% at 50% 50%, rgba(13, 19, 21, 0.64) 0%, #0D1315 100%), url(${Salmon})`,
+		backgroundRepeat: 'no-repeat',
+		backgroundPosition: 'center center',
+		padding: theme.spacing(2, 5),
+		backgroundSize: 'cover',
+	},
 	quote: {
 		flex: 1,
 		position: 'relative',
@@ -34,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 const QuationSection = () => {
 	const classes = useStyles();
 	return (
-		<Box sx={{ background: '#0D1315', py: 10 }}>
+		<Box sx={{ py: 10, border: '1px solid red' }} className={classes.section}>
 			<Box>
 				<Box sx={{ display: 'flex', width: '80%', mx: 'auto', gap: 3 }}>
 					<Box sx={{ flex: 1.5 }}>
@@ -87,6 +94,8 @@ const QuationSection = () => {
 					</Box>
 				</Box>
 			</Box>
+
+			<Box sx={{ height: '20rem', bgcolor: 'aquamarine' }} />
 		</Box>
 	);
 };
