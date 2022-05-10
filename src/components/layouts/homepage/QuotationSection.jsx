@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 const QuationSection = () => {
 	const classes = useStyles();
 	return (
-		<Box sx={{ py: 10, border: '1px solid red' }} className={classes.section}>
+		<Box sx={{ py: 10 }} className={classes.section}>
 			<Box>
 				<Box sx={{ display: 'flex', width: '80%', mx: 'auto', gap: 3 }}>
 					<Box sx={{ flex: 1.5 }}>

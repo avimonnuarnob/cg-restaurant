@@ -42,7 +42,19 @@ const darkMode = {
 
 const getDesignsFromMode = (mode) => ({
 	typography: {
-		fontFamily: 'Inter, open_sanscondensed, sans-serif',
+		fontFamily: [
+			'-apple-system',
+			'Inter',
+			'open_sanscondensed',
+			'"Segoe UI"',
+			'Roboto',
+			'"Helvetica Neue"',
+			'Arial',
+			'sans-serif',
+			'"Apple Color Emoji"',
+			'"Segoe UI Emoji"',
+			'"Segoe UI Symbol"',
+		].join(','),
 	},
 	components: {
 		MuiCssBaseline: {

@@ -73,21 +73,19 @@ const Gallery = () => {
 					</Box>
 				</Box>
 
-				<Box sx={{ px: 5, py: 10 }}>
-					<Box sx={{ py: 10 }}>
-						<Button
-							sx={{
-								fontFamily: 'sans-serif',
-								color: 'white',
-								px: 1,
-								py: 1,
-								border: (theme) => `1px solid ${theme.palette.secondary.main}`,
-								borderRadius: '0',
-							}}
-						>
-							<Box sx={{ backgroundColor: '#121D20', px: 2, py: 1 }}>View all gallery</Box>
-						</Button>
-					</Box>
+				<Box sx={{ pt: 10 }}>
+					<Button
+						sx={{
+							fontFamily: 'sans-serif',
+							color: 'white',
+							px: 1,
+							py: 1,
+							border: (theme) => `1px solid ${theme.palette.secondary.main}`,
+							borderRadius: '0',
+						}}
+					>
+						<Box sx={{ backgroundColor: '#121D20', px: 2, py: 1 }}>View all gallery</Box>
+					</Button>
 				</Box>
 			</Box>
 		</Box>
