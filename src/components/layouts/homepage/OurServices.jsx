@@ -1,9 +1,11 @@
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import { Box, IconButton, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { useInView } from 'react-intersection-observer';
 import CrabImage from '../../../assets/images/crab.jpg';
 import FishImage from '../../../assets/images/fish.jpg';
 import LobstarImage from '../../../assets/images/lobstar.jpg';
+import AnimatedHeader from '../../atoms/AnimatedHeader';
 
 const useStyles = makeStyles((theme) => ({
 	styledHeader: {
@@ -72,22 +74,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const OurServicesSection = () => {
-	console.log('hello');
 	const classes = useStyles();
+	const { ref, inView } = useInView({
+		threshold: 1,
+	});
 
 	return (
 		<section className={classes.sevricesSection}>
-			<Typography
-				fontStyle="italic"
-				fontWeight="bold"
-				variant="h6"
-				sx={{ color: (theme) => theme.palette.secondary.main, mb: 2 }}
-			>
-				Get to know
-			</Typography>
-			<Typography fontFamily="sans-serif" variant="h4" sx={{ mb: 10 }} className={classes.styledHeader}>
-				Our Services
-			</Typography>
+			<Box ref={ref}>
+				<Typography
+					fontStyle="italic"
+					fontWeight="bold"
+					variant="h6"
+					sx={{ color: (theme) => theme.palette.secondary.main, mb: 2 }}
+				>
+					Get to know
+				</Typography>
+				<AnimatedHeader inView={inView} label="Our Services" />
+			</Box>
 
 			<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 15, width: '70%', mx: 'auto' }}>
 				<Box sx={{ backgroundImage: `url(${LobstarImage})` }} className={classes.card}>

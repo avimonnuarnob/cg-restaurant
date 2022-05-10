@@ -7,6 +7,21 @@ import Slide1Image from '../../../assets/images/slide1image.jpg';
 import ZigZag from '../../../assets/svgs/zigZag.svg';
 
 const useStyles = makeStyles((theme) => ({
+	button: {
+		color: '#fff !important',
+		backgroundImage: `linear-gradient(90deg, #121D20 0%,#121D20 50%,${theme.palette.secondary.main} 50%,${theme.palette.secondary.main} 100%)`,
+		backgroundSize: '200%',
+		transition: 'background-position .3s cubic-bezier(.47, .1, 1, .63), color .2s linear !important',
+		transitionDelay: '0.0s, 0.15s !important',
+		borderRadius: '0 !important',
+		padding: `${theme.spacing(1, 3)} !important`,
+		outline: `1px solid ${theme.palette.secondary.main} !important`,
+		outlineOffset: '10px',
+		'&:hover': {
+			color: '#272838 !important',
+			backgroundPosition: '-100% 100%',
+		},
+	},
 	slide: {
 		background: `url(${Slide1Image}) no-repeat`,
 		backgroundSize: 'cover',
@@ -124,87 +139,73 @@ const BannerSection = () => {
 					</Typography>
 
 					<Box sx={{ mt: 10 }}>
-						<Button
-							sx={{
-								fontFamily: 'sans-serif',
-								color: 'white',
-								px: 1,
-								py: 1,
-								border: (theme) => `1px solid ${theme.palette.secondary.main}`,
-								borderRadius: '0',
-							}}
-						>
-							<Box sx={{ backgroundColor: '#121D20', px: 2, py: 1 }}>View More</Box>
-						</Button>
+						<Button className={classes.button}>View More</Button>
 					</Box>
 				</Box>
 
 				<Box className={classes.slide}>
-					<Typography color="secondary.main" fontWeight="bold" variant="h5" sx={{ letterSpacing: '0.25rem' }}>
+					<Typography
+						color="secondary.main"
+						fontWeight="bold"
+						variant="h5"
+						sx={{ letterSpacing: '0.25rem', fontFamily: 'open_sanscondensed' }}
+					>
 						welcome to our delicious corner
 					</Typography>
-					<Typography fontWeight="bolder" className={[classes.slide__slogan, 'stroke-text'].join(' ')}>
-						THE BEST DISHES
-					</Typography>
+
+					<Box sx={{ position: 'relative', display: 'inline-block' }}>
+						<img
+							src={ZigZag}
+							alt="React Logo"
+							className={classes['slide__slogan--logo']}
+							style={{ transform: 'rotate(180deg)', left: '-10px' }}
+						/>
+						<Typography variant="h1" fontWeight="bolder" className={[classes.slide__slogan, 'stroke-text'].join(' ')}>
+							THE BEST DISHES
+						</Typography>
+						<img src={ZigZag} alt="React Logo" className={classes['slide__slogan--logo']} style={{ left: '100%' }} />
+					</Box>
+
 					<Typography sx={{ letterSpacing: '0.25rem', margin: 'auto' }} width="50%">
 						We have a proper passion for cooking. Love is the secret ingredient that makes all our meals taste better
 						and magical.
 					</Typography>
+
 					<Box sx={{ mt: 10 }}>
-						<Button
-							sx={{
-								fontFamily: 'sans-serif',
-								color: 'white',
-								px: 1,
-								py: 1,
-								border: (theme) => `1px solid ${theme.palette.secondary.main}`,
-								borderRadius: '0',
-							}}
-						>
-							<Box sx={{ backgroundColor: '#121D20', px: 2, py: 1 }}>View More</Box>
-						</Button>
+						<Button className={classes.button}>View More</Button>
 					</Box>
 				</Box>
 
 				<Box className={classes.slide}>
-					<Typography color="secondary.main" fontWeight="bold" variant="h5" sx={{ letterSpacing: '0.25rem' }}>
+					<Typography
+						color="secondary.main"
+						fontWeight="bold"
+						variant="h5"
+						sx={{ letterSpacing: '0.25rem', fontFamily: 'open_sanscondensed' }}
+					>
 						welcome to our delicious corner
 					</Typography>
-					<Typography fontWeight="bolder" className={[classes.slide__slogan, 'stroke-text'].join(' ')}>
-						THE BEST DISHES
-					</Typography>
+
+					<Box sx={{ position: 'relative', display: 'inline-block' }}>
+						<img
+							src={ZigZag}
+							alt="React Logo"
+							className={classes['slide__slogan--logo']}
+							style={{ transform: 'rotate(180deg)', left: '-10px' }}
+						/>
+						<Typography variant="h1" fontWeight="bolder" className={[classes.slide__slogan, 'stroke-text'].join(' ')}>
+							THE BEST DISHES
+						</Typography>
+						<img src={ZigZag} alt="React Logo" className={classes['slide__slogan--logo']} style={{ left: '100%' }} />
+					</Box>
+
 					<Typography sx={{ letterSpacing: '0.25rem', margin: 'auto' }} width="50%">
 						We have a proper passion for cooking. Love is the secret ingredient that makes all our meals taste better
-						and magical. We have a proper passion for cooking. Love is the secret ingredient that makes all our meals
-						taste better and magical. We have a proper passion for cooking. Love is the secret ingredient that makes all
-						our meals taste better and magical.
+						and magical.
 					</Typography>
+
 					<Box sx={{ mt: 10 }}>
-						<Button
-							sx={{
-								fontFamily: 'sans-serif',
-								color: 'white',
-								px: 1,
-								py: 1,
-								border: (theme) => `1px solid ${theme.palette.secondary.main}`,
-								borderRadius: '0',
-							}}
-						>
-							<Box
-								sx={{
-									backgroundColor: '#121D20',
-									px: 2,
-									py: 1,
-									transition: 'all 0.5s',
-									'&:hover': {
-										color: 'black',
-										bgcolor: 'white',
-									},
-								}}
-							>
-								View More
-							</Box>
-						</Button>
+						<Button className={classes.button}>View More</Button>
 					</Box>
 				</Box>
 			</Slider>

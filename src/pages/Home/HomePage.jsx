@@ -1,6 +1,7 @@
 import React from 'react';
 import AboutSection from '../../components/layouts/homepage/AboutSection';
 import BannerSection from '../../components/layouts/homepage/BannerSection';
+import BlogSection from '../../components/layouts/homepage/BlogSection';
 import Gallery from '../../components/layouts/homepage/Gallery';
 import MakeReserveSection from '../../components/layouts/homepage/MakeReserveSection';
 import MenuSection from '../../components/layouts/homepage/MenuSection';
@@ -18,6 +19,7 @@ const HomePage = () => (
 		<Gallery />
 		<QuationSection />
 		<MakeReserveSection />
+		<BlogSection />
 	</div>
 );
 
