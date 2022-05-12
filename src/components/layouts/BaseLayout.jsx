@@ -1,10 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React, { Suspense } from 'react';
 import routeConfig from '../../routes';
 import routes from '../../routes/routes';
 import Footer from './Footer';
-import Header from './Header';
 
 const useStyles = makeStyles(() => ({
 	header: {
@@ -21,9 +21,9 @@ const BaseLayout = () => {
 
 	return (
 		<>
-			<Box sx={{ padding: { xs: '10px', sm: '10px 25px', md: '10px' } }} className={classes.header}>
+			{/* <Box sx={{ padding: { xs: '10px', sm: '10px 25px', md: '10px' } }} className={classes.header}>
 				<Header />
-			</Box>
+			</Box> */}
 
 			<main>
 				<Suspense fallback={<div>Loading...</div>}>

@@ -20,6 +20,28 @@ const useStyles = makeStyles((theme) => ({
 	card__icon: {
 		color: theme.palette.secondary.main,
 	},
+
+	button: {
+		color: '#fff !important',
+		backgroundImage: `linear-gradient(90deg, #121D20 0%,#121D20 50%,${theme.palette.secondary.main} 50%,${theme.palette.secondary.main} 100%)`,
+		backgroundSize: '200%',
+		transition: 'background-position .3s cubic-bezier(.47, .1, 1, .63), color .2s linear !important',
+		transitionDelay: '0.0s, 0.15s !important',
+		borderRadius: '0 !important',
+		padding: `${theme.spacing(1, 3)} !important`,
+		// outline: `1px solid ${theme.palette.secondary.main} !important`,
+		outlineOffset: '10px',
+		'&:hover': {
+			color: '#272838 !important',
+			backgroundPosition: '-100% 100%',
+		},
+	},
+	button__container: {
+		margin: theme.spacing(5, 0),
+		border: `1px solid ${theme.palette.secondary.main}`,
+		display: 'inline-block',
+		padding: theme.spacing(1),
+	},
 }));
 
 const BlogSection = () => {
@@ -177,19 +199,8 @@ const BlogSection = () => {
 				</Box>
 			</Box>
 
-			<Box sx={{ pt: 10 }}>
-				<Button
-					sx={{
-						fontFamily: 'sans-serif',
-						color: 'white',
-						px: 1,
-						py: 1,
-						border: (theme) => `1px solid ${theme.palette.secondary.main}`,
-						borderRadius: '0',
-					}}
-				>
-					<Box sx={{ backgroundColor: '#121D20', px: 2, py: 1 }}>View All New</Box>
-				</Button>
+			<Box className={classes.button__container}>
+				<Button className={classes.button}>View All New</Button>
 			</Box>
 		</section>
 	);
