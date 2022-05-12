@@ -13,8 +13,8 @@ const HomePage = () => (
 	<div>
 		<BannerSection />
 		<AboutSection />
-		<OurServicesSection />
 		<MenuSection />
+		<OurServicesSection />
 		<UpacomingEvents />
 		<Gallery />
 		<QuationSection />

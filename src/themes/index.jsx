@@ -55,6 +55,9 @@ const getDesignsFromMode = (mode) => ({
 			'"Segoe UI Emoji"',
 			'"Segoe UI Symbol"',
 		].join(','),
+		h3: {
+			fontWeight: 300,
+		},
 	},
 	components: {
 		MuiCssBaseline: {

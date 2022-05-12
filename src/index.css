@@ -39,11 +39,11 @@
 }
 
 body::-webkit-scrollbar {
-  width: 1em;
+  width: 0.25em;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #C4AC86;
-  outline: 1px solid #C4AC86;
-  border-radius: 20px;
+  background-color: #9c7c57;
+  /* outline: 1px solid #9c7c57; */
+  /* border-radius: 2px; */
 }

@@ -8,8 +8,10 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { makeStyles, withStyles } from '@mui/styles';
 import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import DJImage from '../../../assets/images/dj.jpg';
 import UpcomingEvents from '../../../assets/images/upcomingEvents.jpg';
+import AnimatedHeader from '../../atoms/AnimatedHeader';
 
 const data = [
 	{
@@ -280,6 +282,9 @@ const TabPanel = (props) => {
 
 const UpacomingEvents = () => {
 	const classes = useStyles();
+	const { ref, inView } = useInView({
+		threshold: 0.3,
+	});
 	const [value, setValue] = useState(0);
 	const [selectedData, setSelectedData] = useState({});
 
@@ -295,7 +300,7 @@ const UpacomingEvents = () => {
 
 	return (
 		<Box sx={{ background: '#0D1315', py: 10 }}>
-			<Box className={classes.eventsSection}>
+			<Box className={classes.eventsSection} ref={ref}>
 				<Typography
 					fontStyle="italic"
 					fontWeight="bold"
@@ -304,9 +309,8 @@ const UpacomingEvents = () => {
 				>
 					Events
 				</Typography>
-				<Typography fontFamily="sans-serif" variant="h4" sx={{ mb: 10 }} className={classes.styledHeader}>
-					Upcoming Events
-				</Typography>
+				<AnimatedHeader inView={inView} label="Upcoming Events" />
+
 				<StyledTabs centered value={value} onChange={handleChange} aria-label="styled tabs example">
 					{data?.map((el) => (
 						<StyledTab

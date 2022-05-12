@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	slide__slogan: {
 		letterSpacing: '1.25rem !important',
-		fontSize: '6.875rem !important',
+		// fontSize: '6.875rem !important',
 		fontFamily: 'open_sanscondensed !important',
 	},
 	'slide__slogan--logo': {
@@ -128,7 +128,7 @@ const BannerSection = () => {
 							style={{ transform: 'rotate(180deg)', left: '-10px' }}
 						/>
 						<Typography variant="h1" fontWeight="bolder" className={[classes.slide__slogan, 'stroke-text'].join(' ')}>
-							THE BEST DISHES
+							Own The Royality
 						</Typography>
 						<img src={ZigZag} alt="React Logo" className={classes['slide__slogan--logo']} style={{ left: '100%' }} />
 					</Box>
