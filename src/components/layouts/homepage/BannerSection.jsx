@@ -5,6 +5,7 @@ import { makeStyles } from '@mui/styles';
 import Slider from 'react-slick';
 import Slide1Image from '../../../assets/images/slide1image.jpg';
 import ZigZag from '../../../assets/svgs/zigZag.svg';
+import Decor from '../../atoms/Decor';
 
 const useStyles = makeStyles((theme) => ({
 	button: {
@@ -89,8 +90,8 @@ const SamplePrevArrow = (props) => {
 
 const settings = {
 	dots: true,
-	infinite: true,
-	autoplay: true,
+	// infinite: true,
+	// autoplay: true,
 	speed: 2000,
 	autoplaySpeed: 2000,
 	cssEase: 'cubic-bezier(0.165, 0.840, 0.440, 1.000)',
@@ -108,7 +109,7 @@ const BannerSection = () => {
 	const classes = useStyles();
 
 	return (
-		<div>
+		<section>
 			<Slider {...settings}>
 				<Box className={classes.slide}>
 					<Typography
@@ -121,16 +122,18 @@ const BannerSection = () => {
 					</Typography>
 
 					<Box sx={{ position: 'relative', display: 'inline-block' }}>
-						<img
+						{/* <img
 							src={ZigZag}
 							alt="React Logo"
 							className={classes['slide__slogan--logo']}
 							style={{ transform: 'rotate(180deg)', left: '-10px' }}
-						/>
+						/> */}
+
+						<Decor sx={{ transform: 'translateY(-50%) rotate(180deg)', left: '-10px' }} />
 						<Typography variant="h1" fontWeight="bolder" className={[classes.slide__slogan, 'stroke-text'].join(' ')}>
 							Own The Royality
 						</Typography>
-						<img src={ZigZag} alt="React Logo" className={classes['slide__slogan--logo']} style={{ left: '100%' }} />
+						<Decor sx={{ transform: 'translateY(-50%)', left: '100%' }} />
 					</Box>
 
 					<Typography sx={{ letterSpacing: '0.25rem', margin: 'auto' }} width="50%">
@@ -209,7 +212,7 @@ const BannerSection = () => {
 					</Box>
 				</Box>
 			</Slider>
-		</div>
+		</section>
 	);
 };
 
