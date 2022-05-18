@@ -38,12 +38,19 @@
   -webkit-text-fill-color: transparent;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 0.25em;
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: #9c7c57;
   /* outline: 1px solid #9c7c57; */
   /* border-radius: 2px; */
 }
+
+
+
+
+
+
+

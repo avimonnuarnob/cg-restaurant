@@ -14,6 +14,10 @@ const useStyles = makeStyles(() => ({
 		right: 0,
 		zIndex: 1,
 	},
+	main: {
+		position: 'relative',
+		zIndex: 1,
+	},
 }));
 
 const BaseLayout = () => {
@@ -25,9 +29,9 @@ const BaseLayout = () => {
 				<Header />
 			</Box> */}
 
-			<main>
+			<main className={classes.main}>
 				<Suspense fallback={<div>Loading...</div>}>
-					<Box>{routeConfig(routes)}</Box>
+					<Box sx={{ '& > *': { position: 'relative', zIndex: 10 } }}>{routeConfig(routes)}</Box>
 				</Suspense>
 			</main>
 

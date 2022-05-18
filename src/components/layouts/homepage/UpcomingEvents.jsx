@@ -170,12 +170,49 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	eventsSection: {
-		backgroundImage: `radial-gradient(50% 50% at 50% 50%, rgba(13, 19, 21, 0.4) 0%, #0D1315 100%), url(${UpcomingEvents})`,
+		// backgroundImage: `radial-gradient(50% 50% at 50% 50%, rgba(13, 19, 21, 0.4) 0%, #0D1315 100%)`,
+		// backgroundColor: '#0D1315',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center center',
-		padding: theme.spacing(2, 5),
+		padding: theme.spacing(10),
 		backgroundSize: 'cover',
 		textAlign: 'center',
+		backgroundAttachment: 'fixed',
+		position: 'relative',
+		'&:after': {
+			position: 'absolute',
+			content: '""',
+			backgroundImage: `url(${UpcomingEvents})`,
+			backgroundColor: '#0D1315',
+			width: '100%',
+			height: '100%',
+			top: 0,
+			bottom: 0,
+			left: 0,
+			right: 0,
+			backgroundAttachment: 'fixed',
+			backgroundSize: 'cover',
+			opacity: '0.1',
+		},
+		'&:before': {
+			position: 'absolute',
+			content: '""',
+			// backgroundImage: `url(${PastaImage})`,
+			backgroundColor: '#0D1315',
+			width: '100%',
+			height: '100%',
+			top: 0,
+			bottom: 0,
+			left: 0,
+			right: 0,
+			backgroundAttachment: 'fixed',
+			backgroundSize: 'cover',
+			opacity: '1',
+		},
+		'& > *': {
+			position: 'relative',
+			zIndex: '100',
+		},
 	},
 
 	timeline: {},
@@ -196,7 +233,7 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 	},
 	timeline__connectorbar: {
-		width: '50px',
+		width: '20px',
 		height: '4px',
 	},
 	timeline__activeDot: {
@@ -299,41 +336,38 @@ const UpacomingEvents = () => {
 	};
 
 	return (
-		<Box sx={{ background: '#0D1315', py: 10 }}>
-			<Box className={classes.eventsSection} ref={ref}>
-				<Typography
-					fontStyle="italic"
-					fontWeight="bold"
-					variant="h6"
-					sx={{ color: (theme) => theme.palette.secondary.main, mb: 2 }}
-				>
-					Events
-				</Typography>
-				<AnimatedHeader inView={inView} label="Upcoming Events" />
+		<Box className={classes.eventsSection} ref={ref}>
+			<Typography
+				fontStyle="italic"
+				fontWeight="bold"
+				variant="h6"
+				sx={{ color: (theme) => theme.palette.secondary.main, mb: 2 }}
+			>
+				Events
+			</Typography>
+			<AnimatedHeader inView={inView} label="Upcoming Events" />
 
-				<StyledTabs centered value={value} onChange={handleChange} aria-label="styled tabs example">
-					{data?.map((el) => (
-						<StyledTab
-							label={`${new Date(el.date).getDate()} ${new Date(el.date).toLocaleString('en-US', { month: 'short' })}`}
-							key={el.date}
-						/>
-					))}
-				</StyledTabs>
-
+			<StyledTabs centered value={value} onChange={handleChange} aria-label="styled tabs example">
+				{data?.map((el) => (
+					<StyledTab
+						label={`${new Date(el.date).getDate()} ${new Date(el.date).toLocaleString('en-US', { month: 'short' })}`}
+						key={el.date}
+					/>
+				))}
+			</StyledTabs>
+			<Box sx={{ padding: (theme) => theme.spacing(2, 10) }}>
 				{data?.map((el, i) => (
 					<TabPanel value={value} index={i}>
 						<Box
 							sx={{
 								display: 'flex',
-								justifyContent: 'center',
-								alignItems: 'center',
+
 								// height: '20rem',
 							}}
 						>
 							<Box
-								className="hello"
 								sx={{
-									width: '90%',
+									width: '100%',
 									display: 'flex',
 									gap: 2,
 									alignItems: 'center',
@@ -345,7 +379,7 @@ const UpacomingEvents = () => {
 									sx={{
 										display: 'flex',
 										flexDirection: { xs: 'row', sm: 'column' },
-										overflow: { xs: 'scroll' },
+										overflowY: { xs: 'scroll' },
 										maxHeight: '20rem',
 									}}
 								>
@@ -383,8 +417,8 @@ const UpacomingEvents = () => {
 										</Box>
 									))}
 								</Box>
-								<Box sx={{ display: 'flex', flex: 1 }} className={classes.card}>
-									<Box className={classes.card__details}>
+								<Box sx={{ display: 'flex', flex: '1 1 400px', flexWrap: 'wrap' }} className={classes.card}>
+									<Box className={classes.card__details} sx={{ flex: 5 }}>
 										<Box sx={{ position: 'relative', textAlign: 'center' }}>
 											<Typography variant="h1" sx={{ opacity: '0.1', fontWeight: 'bold' }}>
 												{`${new Date(el.date).getDate()} ${new Date(el.date).toLocaleString('en-US', {
@@ -409,7 +443,9 @@ const UpacomingEvents = () => {
 											<Typography variant="h4">Entrance</Typography>
 										</Box>
 									</Box>
-									<img src={DJImage} alt="DJ" style={{ width: '424px', height: 'auto' }} />
+									<Box sx={{ flex: '1 1 320px' }}>
+										<img src={DJImage} alt="DJ" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+									</Box>
 									{/* <p>Hello</p> */}
 								</Box>
 								<Box />

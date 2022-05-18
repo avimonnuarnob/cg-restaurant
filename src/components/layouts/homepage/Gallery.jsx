@@ -6,7 +6,9 @@ import Gallery1 from '../../../assets/images/gallery1.jpg';
 import Gallery2 from '../../../assets/images/gallery2.jpg';
 import Gallery3 from '../../../assets/images/gallery3.jpg';
 import Gallery4 from '../../../assets/images/gallery4.jpg';
+import TridentSvg from '../../../assets/svgs/TridentSvg';
 import AnimatedHeader from '../../atoms/AnimatedHeader';
+import AbsoluteBorderedBackground from '../AbsoluteBorderedBackGround';
 
 const useStyles = makeStyles((theme) => ({
 	galleryGrid: {
@@ -72,38 +74,47 @@ const Gallery = () => {
 	});
 
 	return (
-		<Box sx={{ bgcolor: '#0D1315', padding: (theme) => theme.spacing(10) }} ref={ref}>
-			<Box sx={{ p: 2, textAlign: 'center', width: '80%', mx: 'auto' }}>
-				<Typography
-					fontStyle="italic"
-					fontWeight="bold"
-					variant="h6"
-					sx={{ color: (theme) => theme.palette.secondary.main, mb: 2 }}
-				>
-					Our Gallery
-				</Typography>
-				<AnimatedHeader inView={inView} label="Gallery" />
+		<section style={{ position: 'relative' }} ref={ref}>
+			<AbsoluteBorderedBackground />
+			<Box sx={{ position: 'absolute', top: 0 }}>
+				<TridentSvg />
+			</Box>
+			<Box sx={{ position: 'absolute', bottom: 0, right: 0, transform: 'rotate(180deg)' }}>
+				<TridentSvg />
+			</Box>
+			<Box sx={{ padding: (theme) => theme.spacing(15), position: 'relative' }}>
+				<Box sx={{ p: 2, textAlign: 'center', width: '80%', mx: 'auto' }}>
+					<Typography
+						fontStyle="italic"
+						fontWeight="bold"
+						variant="h6"
+						sx={{ color: (theme) => theme.palette.secondary.main, mb: 2 }}
+					>
+						Our Gallery
+					</Typography>
+					<AnimatedHeader inView={inView} label="Gallery" />
 
-				<Box className={classes.galleryGrid}>
-					<Box sx={{ gridColumn: { xs: '1 / -1', sm: '1 / span 2' }, bgcolor: 'red', gridRow: '1 / span 2' }}>
-						<img src={Gallery1} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+					<Box className={classes.galleryGrid}>
+						<Box sx={{ gridColumn: { xs: '1 / -1', sm: '1 / span 2' }, bgcolor: 'red', gridRow: '1 / span 2' }}>
+							<img src={Gallery1} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+						</Box>
+						<Box sx={{ gridColumn: { xs: '1 / -1', sm: '3 / span 1' }, bgcolor: 'blue', gridRow: '1 / span 2' }}>
+							<img src={Gallery2} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+						</Box>
+						<Box sx={{ gridColumn: { xs: '1 / -1', sm: '4 / -1' }, bgcolor: 'white' }}>
+							<img src={Gallery3} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+						</Box>
+						<Box sx={{ gridColumn: { xs: '1 / -1', sm: '4 / -1' }, bgcolor: 'gray' }}>
+							<img src={Gallery4} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+						</Box>
 					</Box>
-					<Box sx={{ gridColumn: { xs: '1 / -1', sm: '3 / span 1' }, bgcolor: 'blue', gridRow: '1 / span 2' }}>
-						<img src={Gallery2} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-					</Box>
-					<Box sx={{ gridColumn: { xs: '1 / -1', sm: '4 / -1' }, bgcolor: 'white' }}>
-						<img src={Gallery3} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-					</Box>
-					<Box sx={{ gridColumn: { xs: '1 / -1', sm: '4 / -1' }, bgcolor: 'gray' }}>
-						<img src={Gallery4} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-					</Box>
-				</Box>
 
-				<Box className={classes.button__container}>
-					<Button className={classes.button}>View All Gallery</Button>
+					<Box className={classes.button__container}>
+						<Button className={classes.button}>View All Gallery</Button>
+					</Box>
 				</Box>
 			</Box>
-		</Box>
+		</section>
 	);
 };
 

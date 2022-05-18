@@ -1,11 +1,14 @@
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import { Box, IconButton, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import CrabImage from '../../../assets/images/crab.jpg';
 import FishImage from '../../../assets/images/fish.jpg';
 import LobstarImage from '../../../assets/images/lobstar.jpg';
+import RoundSvg from '../../../assets/svgs/RoundSvg';
 import AnimatedHeader from '../../atoms/AnimatedHeader';
+import AbsoluteBorderedBackground from '../AbsoluteBorderedBackGround';
 
 const useStyles = makeStyles((theme) => ({
 	styledHeader: {
@@ -35,9 +38,11 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	sevricesSection: {
-		padding: theme.spacing(10, 5),
-		backgroundColor: '#0D1315',
+		// padding: theme.spacing(15),
+		// backgroundColor: '#0D1315',
 		textAlign: 'center',
+		position: 'relative',
+		overflow: 'hidden',
 	},
 
 	card: {
@@ -81,55 +86,78 @@ const OurServicesSection = () => {
 
 	return (
 		<section className={classes.sevricesSection}>
-			<Box ref={ref}>
-				<Typography
-					fontStyle="italic"
-					fontWeight="bold"
-					variant="h6"
-					sx={{ color: (theme) => theme.palette.secondary.main, mb: 2 }}
-				>
-					Get to know
-				</Typography>
-				<AnimatedHeader inView={inView} label="Our Services" />
+			<AbsoluteBorderedBackground />
+			<Box sx={{ position: 'absolute', bottom: '-20%', left: 0 }}>
+				<RoundSvg />
 			</Box>
-
-			<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 15, width: '70%', mx: 'auto' }}>
-				<Box sx={{ backgroundImage: `url(${LobstarImage})` }} className={classes.card}>
-					<span className={classes.card__number}>01</span>
-					<Typography className={classes.card__header}>Fresh Products</Typography>
-					<Typography className={classes.card__detail}>
-						Fishes, shellfishes and crustaceans of our local fishermen. Vegetables from our garden.
+			<Box sx={{ padding: (theme) => theme.spacing(15), position: 'relative' }}>
+				<Box ref={ref}>
+					<Typography
+						fontStyle="italic"
+						fontWeight="bold"
+						variant="h6"
+						sx={{ color: (theme) => theme.palette.secondary.main, mb: 2 }}
+					>
+						Get to know
 					</Typography>
-					<Box sx={{ py: 5 }}>
-						<IconButton variant="outlined" aria-label="delete" className={classes.card__button}>
-							<ArrowForwardOutlinedIcon className={classes.card__icon} />
-						</IconButton>
-					</Box>
+					<AnimatedHeader inView={inView} label="Our Services" />
 				</Box>
-
-				<Box sx={{ backgroundImage: `url(${CrabImage})` }} className={classes.card}>
-					<span className={classes.card__number}>02</span>
-					<Typography className={classes.card__header}>Fresh Products</Typography>
-					<Typography className={classes.card__detail}>
-						Fishes, shellfishes and crustaceans of our local fishermen. Vegetables from our garden.
-					</Typography>
-					<Box sx={{ py: 5 }}>
-						<IconButton variant="outlined" aria-label="delete" className={classes.card__button}>
-							<ArrowForwardOutlinedIcon className={classes.card__icon} />
-						</IconButton>
+				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 15, width: '70%', mx: 'auto' }}>
+					<Box
+						component={motion.div}
+						animate={{ y: 10 }}
+						transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse' }}
+						sx={{ backgroundImage: `url(${LobstarImage})` }}
+						className={classes.card}
+					>
+						<span className={classes.card__number}>01</span>
+						<Typography className={classes.card__header}>Fresh Products</Typography>
+						<Typography className={classes.card__detail}>
+							Fishes, shellfishes and crustaceans of our local fishermen. Vegetables from our garden.
+						</Typography>
+						<Box sx={{ py: 5 }}>
+							<IconButton variant="outlined" aria-label="delete" className={classes.card__button}>
+								<ArrowForwardOutlinedIcon className={classes.card__icon} />
+							</IconButton>
+						</Box>
 					</Box>
-				</Box>
 
-				<Box sx={{ backgroundImage: `url(${FishImage})` }} className={classes.card}>
-					<span className={classes.card__number}>03</span>
-					<Typography className={classes.card__header}>Fresh Products</Typography>
-					<Typography className={classes.card__detail}>
-						Fishes, shellfishes and crustaceans of our local fishermen. Vegetables from our garden.
-					</Typography>
-					<Box sx={{ py: 5 }}>
-						<IconButton variant="outlined" aria-label="delete" className={classes.card__button}>
-							<ArrowForwardOutlinedIcon className={classes.card__icon} />
-						</IconButton>
+					<Box
+						component={motion.div}
+						animate={{ y: -10 }}
+						transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse' }}
+						sx={{ backgroundImage: `url(${CrabImage})` }}
+						className={classes.card}
+					>
+						<span className={classes.card__number}>02</span>
+						<Typography className={classes.card__header}>Fresh Products</Typography>
+						<Typography className={classes.card__detail}>
+							Fishes, shellfishes and crustaceans of our local fishermen. Vegetables from our garden.
+						</Typography>
+						<Box sx={{ py: 5 }}>
+							<IconButton variant="outlined" aria-label="delete" className={classes.card__button}>
+								<ArrowForwardOutlinedIcon className={classes.card__icon} />
+							</IconButton>
+						</Box>
+					</Box>
+
+					<Box
+						component={motion.div}
+						animate={{ y: 10 }}
+						transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse' }}
+						sx={{ backgroundImage: `url(${FishImage})` }}
+						className={classes.card}
+					>
+						<span className={classes.card__number}>03</span>
+						<Typography className={classes.card__header}>Fresh Products</Typography>
+						<Typography className={classes.card__detail}>
+							Fishes, shellfishes and crustaceans of our local fishermen. Vegetables from our garden.
+						</Typography>
+						<Box sx={{ py: 5 }}>
+							<IconButton variant="outlined" aria-label="delete" className={classes.card__button}>
+								<ArrowForwardOutlinedIcon className={classes.card__icon} />
+							</IconButton>
+						</Box>
 					</Box>
 				</Box>
 			</Box>
