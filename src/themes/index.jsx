@@ -82,6 +82,44 @@ const getDesignsFromMode = (mode) => ({
 			}
       `,
 		},
+		MuiTextField: {
+			styleOverrides: {
+				root: {
+					'& label.Mui-focused': {
+						color: '#C4AC86',
+					},
+					'&:hover fieldset': {
+						borderColor: '#C4AC86',
+					},
+					'&.Mui-focused fieldset': {
+						borderColor: '#C4AC86',
+					},
+					'& .MuiOutlinedInput-root': {
+						'& label': {
+							color: '#C4AC86',
+						},
+						'&:hover fieldset': {
+							borderColor: '#C4AC86',
+						},
+						'&.Mui-focused fieldset': {
+							borderColor: '#C4AC86',
+						},
+					},
+				},
+			},
+		},
+		MuiSelect: {
+			styleOverrides: {
+				root: {
+					'&:hover fieldset': {
+						borderColor: '#C4AC86 !important',
+					},
+					'&.Mui-focused fieldset': {
+						borderColor: '#C4AC86 !important',
+					},
+				},
+			},
+		},
 	},
 	mode,
 	palette: {
