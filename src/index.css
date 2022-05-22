@@ -48,6 +48,16 @@
   /* border-radius: 2px; */
 }
 
+input[type=file]::file-selector-button {
+  border: 1px solid #9c7c57;
+  padding: .2em .4em;
+  border-radius: .2em;
+  background-color: transparent;
+  color: white;
+  transition: 1s;
+  cursor: pointer;
+}
+
 
 
 
