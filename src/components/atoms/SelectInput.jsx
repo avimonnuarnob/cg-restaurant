@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, SvgIcon } from '@mui/material';
 import { ErrorMessage, Field } from 'formik';
 
 const CustomSelectComponent = ({
@@ -37,6 +37,7 @@ const SelectInput = ({ name, options, ...props }) => (
 			</MenuItem>
 			{options?.map((option) => (
 				<MenuItem key={option?.id} value={option?.value}>
+					{option?.icon ? <SvgIcon sx={{ color: 'white' }}>{option.icon}</SvgIcon> : null}
 					{option?.label}
 				</MenuItem>
 			))}

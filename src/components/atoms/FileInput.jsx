@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Box, FormControl, TextField } from '@mui/material';
+import { Box, FormControl, FormHelperText, TextField } from '@mui/material';
 import { ErrorMessage, Field } from 'formik';
 
 const CustomFileUpload = (props) => {
@@ -37,6 +37,7 @@ const FileInput = ({ name, sx = {}, ...props }) => (
 	<Box sx={sx} autoComplete="off">
 		<FormControl variant="outlined" fullWidth>
 			<Field name={name} component={CustomFileUpload} {...props} />
+			<FormHelperText>File size: Max 1MB, High Resulation: Min 300 DPI</FormHelperText>
 			<ErrorMessage name={name}>{(msg) => <span style={{ color: '#c0392b' }}>{msg}</span>}</ErrorMessage>
 		</FormControl>
 	</Box>
