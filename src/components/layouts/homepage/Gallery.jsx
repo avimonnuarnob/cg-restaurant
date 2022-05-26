@@ -1,10 +1,14 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { Box, Button, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { useInView } from 'react-intersection-observer';
 import Gallery1 from '../../../assets/images/gallery1.jpg';
 import Gallery2 from '../../../assets/images/gallery2.jpg';
 import Gallery3 from '../../../assets/images/gallery3.jpg';
 import Gallery4 from '../../../assets/images/gallery4.jpg';
+import TridentSvg from '../../../assets/svgs/TridentSvg';
+import AnimatedHeader from '../../atoms/AnimatedHeader';
+import AbsoluteBorderedBackground from '../AbsoluteBorderedBackGround';
 
 const useStyles = makeStyles((theme) => ({
 	galleryGrid: {
@@ -39,58 +43,78 @@ const useStyles = makeStyles((theme) => ({
 			transform: 'rotate(45deg) translateX(-50%)',
 		},
 	},
+
+	button: {
+		color: '#fff !important',
+		backgroundImage: `linear-gradient(90deg, #121D20 0%,#121D20 50%,${theme.palette.secondary.main} 50%,${theme.palette.secondary.main} 100%)`,
+		backgroundSize: '200%',
+		transition: 'background-position .3s cubic-bezier(.47, .1, 1, .63), color .2s linear !important',
+		transitionDelay: '0.0s, 0.15s !important',
+		borderRadius: '0 !important',
+		padding: `${theme.spacing(1, 3)} !important`,
+		// outline: `1px solid ${theme.palette.secondary.main} !important`,
+		outlineOffset: '10px',
+		'&:hover': {
+			color: '#272838 !important',
+			backgroundPosition: '-100% 100%',
+		},
+	},
+	button__container: {
+		margin: theme.spacing(5, 0),
+		border: `1px solid ${theme.palette.secondary.main}`,
+		display: 'inline-block',
+		padding: theme.spacing(1),
+	},
 }));
 
 const Gallery = () => {
 	const classes = useStyles();
+	const { ref, inView } = useInView({
+		threshold: 0.5,
+	});
 
 	return (
-		<Box sx={{ bgcolor: '#0D1315' }}>
-			<Box sx={{ p: 2, textAlign: 'center', width: '80%', mx: 'auto' }}>
-				<Typography
-					fontStyle="italic"
-					fontWeight="bold"
-					variant="h6"
-					sx={{ color: (theme) => theme.palette.secondary.main, mb: 2 }}
-				>
-					Our Gallery
-				</Typography>
-				<Typography fontFamily="sans-serif" variant="h4" sx={{ mb: 10 }} className={classes.styledHeader}>
-					Gallery
-				</Typography>
-				<Box className={classes.galleryGrid}>
-					<Box sx={{ gridColumn: { xs: '1 / -1', sm: '1 / span 2' }, bgcolor: 'red', gridRow: '1 / span 2' }}>
-						<img src={Gallery1} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-					</Box>
-					<Box sx={{ gridColumn: { xs: '1 / -1', sm: '3 / span 1' }, bgcolor: 'blue', gridRow: '1 / span 2' }}>
-						<img src={Gallery2} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-					</Box>
-					<Box sx={{ gridColumn: { xs: '1 / -1', sm: '4 / -1' }, bgcolor: 'white' }}>
-						<img src={Gallery3} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-					</Box>
-					<Box sx={{ gridColumn: { xs: '1 / -1', sm: '4 / -1' }, bgcolor: 'gray' }}>
-						<img src={Gallery4} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-					</Box>
-				</Box>
+		<section style={{ position: 'relative' }} ref={ref}>
+			<AbsoluteBorderedBackground />
+			<Box sx={{ position: 'absolute', top: 0 }}>
+				<TridentSvg />
+			</Box>
+			<Box sx={{ position: 'absolute', bottom: 0, right: 0, transform: 'rotate(180deg)' }}>
+				<TridentSvg />
+			</Box>
+			<Box sx={{ padding: (theme) => theme.spacing(15), position: 'relative' }}>
+				<Box sx={{ p: 2, textAlign: 'center', width: '80%', mx: 'auto' }}>
+					<Typography
+						fontStyle="italic"
+						fontWeight="bold"
+						variant="h6"
+						sx={{ color: (theme) => theme.palette.secondary.main, mb: 2 }}
+					>
+						Our Gallery
+					</Typography>
+					<AnimatedHeader inView={inView} label="Gallery" />
 
-				<Box sx={{ px: 5, py: 10 }}>
-					<Box sx={{ py: 10 }}>
-						<Button
-							sx={{
-								fontFamily: 'sans-serif',
-								color: 'white',
-								px: 1,
-								py: 1,
-								border: (theme) => `1px solid ${theme.palette.secondary.main}`,
-								borderRadius: '0',
-							}}
-						>
-							<Box sx={{ backgroundColor: '#121D20', px: 2, py: 1 }}>View all gallery</Box>
-						</Button>
+					<Box className={classes.galleryGrid}>
+						<Box sx={{ gridColumn: { xs: '1 / -1', sm: '1 / span 2' }, bgcolor: 'red', gridRow: '1 / span 2' }}>
+							<img src={Gallery1} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+						</Box>
+						<Box sx={{ gridColumn: { xs: '1 / -1', sm: '3 / span 1' }, bgcolor: 'blue', gridRow: '1 / span 2' }}>
+							<img src={Gallery2} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+						</Box>
+						<Box sx={{ gridColumn: { xs: '1 / -1', sm: '4 / -1' }, bgcolor: 'white' }}>
+							<img src={Gallery3} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+						</Box>
+						<Box sx={{ gridColumn: { xs: '1 / -1', sm: '4 / -1' }, bgcolor: 'gray' }}>
+							<img src={Gallery4} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+						</Box>
+					</Box>
+
+					<Box className={classes.button__container}>
+						<Button className={classes.button}>View All Gallery</Button>
 					</Box>
 				</Box>
 			</Box>
-		</Box>
+		</section>
 	);
 };
 

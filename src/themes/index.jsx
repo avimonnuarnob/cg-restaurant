@@ -42,7 +42,22 @@ const darkMode = {
 
 const getDesignsFromMode = (mode) => ({
 	typography: {
-		fontFamily: 'Inter, open_sanscondensed, sans-serif',
+		fontFamily: [
+			'-apple-system',
+			'Inter',
+			'open_sanscondensed',
+			'"Segoe UI"',
+			'Roboto',
+			'"Helvetica Neue"',
+			'Arial',
+			'sans-serif',
+			'"Apple Color Emoji"',
+			'"Segoe UI Emoji"',
+			'"Segoe UI Symbol"',
+		].join(','),
+		h3: {
+			fontWeight: 300,
+		},
 	},
 	components: {
 		MuiCssBaseline: {
@@ -66,6 +81,44 @@ const getDesignsFromMode = (mode) => ({
 				font-style: normal;	
 			}
       `,
+		},
+		MuiTextField: {
+			styleOverrides: {
+				root: {
+					'& label.Mui-focused': {
+						color: '#C4AC86',
+					},
+					'&:hover fieldset': {
+						borderColor: '#C4AC86',
+					},
+					'&.Mui-focused fieldset': {
+						borderColor: '#C4AC86',
+					},
+					'& .MuiOutlinedInput-root': {
+						'& label': {
+							color: '#C4AC86',
+						},
+						'&:hover fieldset': {
+							borderColor: '#C4AC86',
+						},
+						'&.Mui-focused fieldset': {
+							borderColor: '#C4AC86',
+						},
+					},
+				},
+			},
+		},
+		MuiSelect: {
+			styleOverrides: {
+				root: {
+					'&:hover fieldset': {
+						borderColor: '#C4AC86 !important',
+					},
+					'&.Mui-focused fieldset': {
+						borderColor: '#C4AC86 !important',
+					},
+				},
+			},
 		},
 	},
 	mode,

@@ -3,6 +3,7 @@ import { Box, Button, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import DJImage from '../../../assets/images/dj.jpg';
 import Salmon from '../../../assets/images/salmon.jpg';
+import QuationSvg from '../../../assets/svgs/QuationSvg';
 import QuoteSvg from '../../../assets/svgs/quote.svg';
 
 const useStyles = makeStyles((theme) => ({
@@ -10,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundImage: `radial-gradient(50% 50% at 50% 50%, rgba(13, 19, 21, 0.64) 0%, #0D1315 100%), url(${Salmon})`,
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center center',
-		padding: theme.spacing(2, 5),
+		padding: theme.spacing(15, 5),
 		backgroundSize: 'cover',
 	},
 	quote: {
@@ -36,30 +37,41 @@ const useStyles = makeStyles((theme) => ({
 			borderRadius: '50%',
 		},
 	},
+
+	button: {
+		color: '#fff !important',
+		backgroundImage: `linear-gradient(90deg, #121D20 0%,#121D20 50%,${theme.palette.secondary.main} 50%,${theme.palette.secondary.main} 100%)`,
+		backgroundSize: '200%',
+		transition: 'background-position .3s cubic-bezier(.47, .1, 1, .63), color .2s linear !important',
+		transitionDelay: '0.0s, 0.15s !important',
+		borderRadius: '0 !important',
+		padding: `${theme.spacing(1, 3)} !important`,
+		// outline: `1px solid ${theme.palette.secondary.main} !important`,
+		outlineOffset: '10px',
+		'&:hover': {
+			color: '#272838 !important',
+			backgroundPosition: '-100% 100%',
+		},
+	},
+	button__container: {
+		margin: theme.spacing(5, 0),
+		border: `1px solid ${theme.palette.secondary.main}`,
+		display: 'inline-block',
+		padding: theme.spacing(1),
+	},
 }));
 
 const QuationSection = () => {
 	const classes = useStyles();
 	return (
-		<Box sx={{ py: 10, border: '1px solid red' }} className={classes.section}>
+		<Box className={classes.section}>
 			<Box>
 				<Box sx={{ display: 'flex', width: '80%', mx: 'auto', gap: 3 }}>
 					<Box sx={{ flex: 1.5 }}>
 						<Typography sx={{ color: 'secondary.main', mb: 2 }}>GuestBook</Typography>
 						<Typography variant="h3">Read Incredible Stories of Our Guests</Typography>
-						<Box sx={{ py: 10 }}>
-							<Button
-								sx={{
-									fontFamily: 'sans-serif',
-									color: 'white',
-									px: 1,
-									py: 1,
-									border: (theme) => `1px solid ${theme.palette.secondary.main}`,
-									borderRadius: '0',
-								}}
-							>
-								<Box sx={{ backgroundColor: '#121D20', px: 2, py: 1 }}>All Testimonial</Box>
-							</Button>
+						<Box className={classes.button__container}>
+							<Button className={classes.button}>All Testimonial</Button>
 						</Box>
 					</Box>
 					<Box className={classes.quote}>
@@ -95,7 +107,12 @@ const QuationSection = () => {
 				</Box>
 			</Box>
 
-			<Box sx={{ height: '20rem', bgcolor: 'aquamarine' }} />
+			<Box sx={{ pt: 10, display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+				<QuationSvg />
+				<Typography variant="h3" sx={{ width: '70%', mx: 'auto', textAlign: 'center', mt: 3 }}>
+					Teste & Feel the Spirit of Sea. Quality of Michelin.
+				</Typography>
+			</Box>
 		</Box>
 	);
 };
