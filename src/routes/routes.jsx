@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import CreateServicesPage from '../pages/CreateServices/CreateServicesPage';
 import HomePage from '../pages/Home/HomePage';
 import RegistrationPage from '../pages/Registration/RegistrationPage';
 
@@ -36,6 +37,14 @@ const routes = [
 		exact: true,
 		name: 'StoreItemDetails',
 		component: StoreItemDetails,
+		protected: false,
+	},
+	{
+		id: 'f3d3fd52-9d88-465b-bf05-7c3dc79b7023',
+		path: '/create-services',
+		exact: true,
+		name: 'CreateServices',
+		component: CreateServicesPage,
 		protected: false,
 	},
 ];

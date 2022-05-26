@@ -37,10 +37,6 @@ const FormikRadioGroup = ({ field, form: { touched, errors }, name, options, chi
          or just render the children if you're using the function as a child */}
 				{options ? renderOptions(options) : children}
 			</RadioGroup>
-
-			{touched[fieldName] && errors[fieldName] && (
-				<span style={{ color: 'red', fontFamily: 'sans-serif' }}>{errors[fieldName]}</span>
-			)}
 		</>
 	);
 };
